@@ -11,13 +11,14 @@ import (
 // reflect.Value() 获取类型；通过kind判断类型
 func TestTypeAndValue(t *testing.T) {
 	var f int64 = 10
+	// 值 -> 类型
 	t.Logf("类型: %s, 值： %v \n", reflect.TypeOf(f), reflect.ValueOf(f))
 	t.Logf("根据值来判断类型：%s", reflect.ValueOf(f).Type())
 }
 
 func CheckType(v interface{}) {
 	t := reflect.TypeOf(v)
-	// t.kind() 获取类型，为什么不用reflect.TypeOf(),因为case不能使用float等特殊字符
+	// t.kind() 获取类型，为什么不用reflect.TypeOf(),因为case不能使用float等特殊字符, 只能是reflace.Type的一种，通过Kind获取
 	switch t.Kind() {
 	case reflect.Float32, reflect.Float64:
 		fmt.Println("Its float")
